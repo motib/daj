@@ -1,0 +1,722 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Running the algorithm</title>
+</head>
+
+<body>
+
+<p><font color="#0000FF" size="5"><b>Huang&#146;s Termination
+Detection Algorithm</b></font></p>
+
+<hr>
+
+<p><font color="#0000FF" size="4">Example of algorithm execution</font></p>
+
+<p><b>Notations</b></p>
+
+<ul>
+    <li><font size="3"><strong>B(DW)</strong> = Computation
+        message sent as a part of the computation and <strong>DW</strong>
+        is the weight assigned to it.</font></li>
+    <li><font size="3"><strong>C(DW)</strong> = Control message
+        sent from the process to the controlling agent and <strong>DW</strong>
+        is the weight assigned to it.</font></li>
+    <li><font size="3">John is the <b>Controlling Agent</b> that
+        can send <b>Computation Messages</b>, and receive <b>Control
+        Messages</b>.</font></li>
+    <li><font size="3">Zoe, Leo and Basil are <b>processes</b>
+        that can receive <b>Computation Messages</b>, and send <b>Control
+        Messages</b> to John (Controlling Agent)</font></li>
+</ul>
+
+<p><font color="#0000FF" size="4"><b>Initial states:</b></font></p>
+
+<table border="1" cellpadding="7" cellspacing="1" width="687">
+    <tr>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Applet </b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>State</b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Weight</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>Send </b></p>
+        </td>
+        <td valign="top" width="8%" bgcolor="#FFFFFF"><p
+        align="center"><b>To</b></p>
+        </td>
+        <td valign="top" width="12%" bgcolor="#FFFFFF"><p
+        align="center"><b>Receive</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>From</b></p>
+        </td>
+        <td valign="top" width="14%" bgcolor="#FFFFFF"><p
+        align="center"><b>New state</b></p>
+        </td>
+        <td valign="top" width="15%" bgcolor="#FFFFFF"><p
+        align="center"><b>New Weight</b></p>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>John </b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">1.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Zoe</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Leo</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Basil</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#0000FF" size="4"><b>Step 1</b></font></p>
+
+<p><strong>Applet: </strong><font color="#0000FF"><strong>John</strong></font></p>
+
+<ul>
+    <li><font size="3">Click Computation Message</font></li>
+    <li><font size="3">Click Address Zoe</font></li>
+</ul>
+
+<table border="1" cellpadding="7" cellspacing="1" width="687">
+    <tr>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Applet </b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>State</b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Weight</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>Send </b></p>
+        </td>
+        <td valign="top" width="8%" bgcolor="#FFFFFF"><p
+        align="center"><b>To</b></p>
+        </td>
+        <td valign="top" width="12%" bgcolor="#FFFFFF"><p
+        align="center"><b>Receive</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>From</b></p>
+        </td>
+        <td valign="top" width="14%" bgcolor="#FFFFFF"><p
+        align="center"><b>New state</b></p>
+        </td>
+        <td valign="top" width="15%" bgcolor="#FFFFFF"><p
+        align="center"><b>New Weight</b></p>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>John </b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">1.0</font></td>
+        <td valign="top" width="10%"><font size="2">B(DW)</font></td>
+        <td valign="top" width="8%"><font size="2">Zoe</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">Active</font></td>
+        <td valign="top" width="15%"><font size="2">0.5</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Zoe</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">B(DW)</font></td>
+        <td valign="top" width="10%"><font size="2">John</font></td>
+        <td valign="top" width="12%"><font size="2">Active</font></td>
+        <td valign="top" width="15%"><font size="2">0.5</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Leo</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Basil</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#0000FF" size="4"><b>Step 2</b></font></p>
+
+<p><strong>Applet:</strong> <font color="#0000FF"><strong>John</strong></font></p>
+
+<ul>
+    <li><font size="3">Click Computation Message</font></li>
+    <li><font size="3">Click Address Basil</font></li>
+</ul>
+
+<table border="1" cellpadding="7" cellspacing="1" width="687">
+    <tr>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Applet </b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>State</b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Weight</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>Send </b></p>
+        </td>
+        <td valign="top" width="8%" bgcolor="#FFFFFF"><p
+        align="center"><b>To</b></p>
+        </td>
+        <td valign="top" width="12%" bgcolor="#FFFFFF"><p
+        align="center"><b>Receive</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>From</b></p>
+        </td>
+        <td valign="top" width="14%" bgcolor="#FFFFFF"><p
+        align="center"><b>New state</b></p>
+        </td>
+        <td valign="top" width="15%" bgcolor="#FFFFFF"><p
+        align="center"><b>New Weight</b></p>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>John </b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.5</font></td>
+        <td valign="top" width="10%"><font size="2">B(DW)</font></td>
+        <td valign="top" width="8%"><font size="2">Basil</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">Active</font></td>
+        <td valign="top" width="15%"><font size="2">0.25</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Zoe</b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.5</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Leo</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Basil</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">B(DW)</font></td>
+        <td valign="top" width="10%"><font size="2">John</font></td>
+        <td valign="top" width="12%"><font size="2">Active</font></td>
+        <td valign="top" width="15%"><font size="2">0.25</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#0000FF" size="4"><b>Step 3</b></font></p>
+
+<p><strong>Applet: </strong><font color="#0000FF"><strong>Zoe</strong></font></p>
+
+<ul>
+    <li><font size="3">Click Computation Message</font></li>
+    <li><font size="3">Click Address Leo</font></li>
+</ul>
+
+<table border="1" cellpadding="7" cellspacing="1" width="687">
+    <tr>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Applet </b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>State</b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Weight</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>Send </b></p>
+        </td>
+        <td valign="top" width="8%" bgcolor="#FFFFFF"><p
+        align="center"><b>To</b></p>
+        </td>
+        <td valign="top" width="12%" bgcolor="#FFFFFF"><p
+        align="center"><b>Receive</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>From</b></p>
+        </td>
+        <td valign="top" width="14%" bgcolor="#FFFFFF"><p
+        align="center"><b>New state</b></p>
+        </td>
+        <td valign="top" width="15%" bgcolor="#FFFFFF"><p
+        align="center"><b>New Weight</b></p>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>John </b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.25</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Zoe</b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.5</font></td>
+        <td valign="top" width="10%"><font size="2">B(DW)</font></td>
+        <td valign="top" width="8%"><font size="2">Leo</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">Active</font></td>
+        <td valign="top" width="15%"><font size="2">0.25</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Leo</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">B(DW)</font></td>
+        <td valign="top" width="10%"><font size="2">Zoe</font></td>
+        <td valign="top" width="12%"><font size="2">Active</font></td>
+        <td valign="top" width="15%"><font size="2">0.25</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Basil</b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.25</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#0000FF" size="4"><b>Step 4</b></font></p>
+
+<p><strong>Applet: </strong><font color="#0000FF"><strong>Zoe</strong></font></p>
+
+<ul>
+    <li><font size="3">Click Computation Complete</font></li>
+    <li><font size="3">Click Address John (Controlling Agent)</font></li>
+</ul>
+
+<table border="1" cellpadding="7" cellspacing="1" width="687">
+    <tr>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Applet </b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>State</b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Weight</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>Send </b></p>
+        </td>
+        <td valign="top" width="8%" bgcolor="#FFFFFF"><p
+        align="center"><b>To</b></p>
+        </td>
+        <td valign="top" width="12%" bgcolor="#FFFFFF"><p
+        align="center"><b>Receive</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>From</b></p>
+        </td>
+        <td valign="top" width="14%" bgcolor="#FFFFFF"><p
+        align="center"><b>New state</b></p>
+        </td>
+        <td valign="top" width="15%" bgcolor="#FFFFFF"><p
+        align="center"><b>New Weight</b></p>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>John </b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.25</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">C(DW)</font></td>
+        <td valign="top" width="10%"><font size="2">Zoe</font></td>
+        <td valign="top" width="12%"><font size="2">Active</font></td>
+        <td valign="top" width="15%"><font size="2">0.5</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Zoe</b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.25</font></td>
+        <td valign="top" width="10%"><font size="2">C(DW)</font></td>
+        <td valign="top" width="8%"><font size="2">John</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">Idle</font></td>
+        <td valign="top" width="15%"><font size="2">0.0</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Leo</b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.25</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Basil</b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.25</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#0000FF" size="4"><b>Step 5</b></font></p>
+
+<p><strong>Applet:</strong> <font color="#0000FF"><strong>Leo</strong></font></p>
+
+<ul>
+    <li><font size="3">Click Control Message</font></li>
+    <li><font size="3">Click Address John (Controlling Agent)</font></li>
+</ul>
+
+<table border="1" cellpadding="7" cellspacing="1" width="687">
+    <tr>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Applet </b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>State</b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Weight</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>Send </b></p>
+        </td>
+        <td valign="top" width="8%" bgcolor="#FFFFFF"><p
+        align="center"><b>To</b></p>
+        </td>
+        <td valign="top" width="12%" bgcolor="#FFFFFF"><p
+        align="center"><b>Receive</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>From</b></p>
+        </td>
+        <td valign="top" width="14%" bgcolor="#FFFFFF"><p
+        align="center"><b>New state</b></p>
+        </td>
+        <td valign="top" width="14%" bgcolor="#FFFFFF"><p
+        align="center"><b>New Weight</b></p>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>John </b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.5</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">C(DW)</font></td>
+        <td valign="top" width="10%"><font size="2">Leo</font></td>
+        <td valign="top" width="12%"><font size="2">Active</font></td>
+        <td valign="top" width="15%"><font size="2">0.75</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Zoe</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Leo</b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.25</font></td>
+        <td valign="top" width="10%"><font size="2">C(DW)</font></td>
+        <td valign="top" width="8%"><font size="2">John</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">Idle</font></td>
+        <td valign="top" width="15%"><font size="2">0.0</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Basil</b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.25</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#0000FF" size="4"><b>Step 6</b></font></p>
+
+<p><font size="3"><strong>Applet:</strong> </font><font
+color="#0000FF" size="3"><strong>Basil</strong></font></p>
+
+<ul>
+    <li><font size="3">Click Control Message</font></li>
+    <li><font size="3">Click Address John (Controlling Agent)</font></li>
+</ul>
+
+<table border="1" cellpadding="7" cellspacing="1" width="687">
+    <tr>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Applet </b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>State</b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Weight</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>Send </b></p>
+        </td>
+        <td valign="top" width="8%" bgcolor="#FFFFFF"><p
+        align="center"><b>To</b></p>
+        </td>
+        <td valign="top" width="12%" bgcolor="#FFFFFF"><p
+        align="center"><b>Receive</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>From</b></p>
+        </td>
+        <td valign="top" width="14%" bgcolor="#FFFFFF"><p
+        align="center"><b>New state</b></p>
+        </td>
+        <td valign="top" width="15%" bgcolor="#FFFFFF"><p
+        align="center"><b>New Weight</b></p>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>John </b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.75</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">C(DW)</font></td>
+        <td valign="top" width="10%"><font size="2">Basil</font></td>
+        <td valign="top" width="12%"><font size="2">Active</font></td>
+        <td valign="top" width="15%"><font size="2"><b>1.0</b></font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Zoe</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Leo</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Basil</b></font></td>
+        <td valign="top" width="11%"><font size="2">Active</font></td>
+        <td valign="top" width="11%"><font size="2">0.25</font></td>
+        <td valign="top" width="10%"><font size="2">C(DW)</font></td>
+        <td valign="top" width="8%"><font size="2">John</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">Idle</font></td>
+        <td valign="top" width="15%"><font size="2">0.0</font></td>
+    </tr>
+</table>
+
+<p><font size="3">John&#146;s weight is 1.0 after this operation,
+and computation has therefor terminated.</font></p>
+
+<hr>
+
+<p><font color="#0000FF" size="4"><b>End states:</b></font></p>
+
+<table border="1" cellpadding="7" cellspacing="1" width="687">
+    <tr>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Applet </b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>State</b></p>
+        </td>
+        <td valign="top" width="11%" bgcolor="#FFFFFF"><p
+        align="center"><b>Weight</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>Send </b></p>
+        </td>
+        <td valign="top" width="8%" bgcolor="#FFFFFF"><p
+        align="center"><b>To</b></p>
+        </td>
+        <td valign="top" width="12%" bgcolor="#FFFFFF"><p
+        align="center"><b>Receive</b></p>
+        </td>
+        <td valign="top" width="10%" bgcolor="#FFFFFF"><p
+        align="center"><b>From</b></p>
+        </td>
+        <td valign="top" width="14%" bgcolor="#FFFFFF"><p
+        align="center"><b>New state</b></p>
+        </td>
+        <td valign="top" width="14%" bgcolor="#FFFFFF"><p
+        align="center"><b>New Weight</b></p>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>John </b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">1.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2"><b>-</b></font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Zoe</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Leo</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+    <tr>
+        <td valign="top" width="11%"><font size="2"><b>Basil</b></font></td>
+        <td valign="top" width="11%"><font size="2">Idle</font></td>
+        <td valign="top" width="11%"><font size="2">0.0</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="8%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="10%"><font size="2">-</font></td>
+        <td valign="top" width="12%"><font size="2">-</font></td>
+        <td valign="top" width="15%"><font size="2">-</font></td>
+    </tr>
+</table>
+
+</body>
+</html>
