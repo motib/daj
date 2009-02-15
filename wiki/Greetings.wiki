@@ -1,7 +1,5 @@
 #summary Initial wiki page for the project
 
-= Greetings =
-
 Welcome to the DAJ project.
 
 It is a stable project, but I am currently the only project owner.
