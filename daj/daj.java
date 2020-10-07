@@ -2,7 +2,7 @@
       DAJ - Distributed Algorithms in Java.
 	  Developed by Moti Ben-Ari and 
 	  other programmers as listed in "About" frame.
-      Copyright 2003-5 by Mordechai (Moti) Ben-Ari.
+      Copyright 2003-2006, 2020 by Mordechai (Moti) Ben-Ari.
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

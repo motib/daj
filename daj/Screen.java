@@ -300,7 +300,7 @@ public class Screen extends JFrame implements ActionListener, KeyListener {
   private JScrollPane scroll  = new JScrollPane(traceArea);
 
   // Strings for buttons
-  public static final String VERSIONNUMBER = "3.4";
+  public static final String VERSIONNUMBER = "3.5";
   public static final String VERSION   = "DAJ V";
   private static final String
     TRACE     = "Action trace",

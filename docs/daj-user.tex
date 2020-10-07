@@ -1,4 +1,3 @@
-%Options: KBD=VOID; STD=VOID; LANG=ENGLISH; FMT=LATEXTM; HYPHEN=default;
 \documentclass[11pt]{article}
 \usepackage{url}
 \usepackage{verbatim}
@@ -10,7 +9,7 @@
 \newcommand{\bu}[1]{\textsf{#1}}
 
 \textwidth=15cm
-\textheight=22cm
+\textheight=22cm	
 \topmargin=0pt
 \headheight=0pt
 \oddsidemargin=1cm
@@ -19,14 +18,15 @@
 \setlength{\parskip}{0.20\baselineskip plus 1pt minus 1pt}
 \parindent=0pt
 
-\title{\daj{} - Distributed Algorithms in Java\\User's Guide\\\mbox{}\\\large{Version 3.4}}
+\title{\daj{} - Distributed Algorithms in Java\\User's Guide\\\mbox{}\\\large{Version 3.5}}
 \author{Mordechai (Moti) Ben-Ari\\
 Department of Science Teaching\\
 Weizmann Institute of Science\\
 Rehovot 76100 Israel\\
-\textsf{moti.ben-ari@weizmann.ac.il}\\
-\textsf{http://stwww.weizmann.ac.il/g-cs/benari/}}
-\date{18 January 2006}
+\textsf{moti.ben.ari@gmail.com}\\
+\url{https://www.weizmann.ac.il/sci-tea/benari/home}}
+\date{18 January 2006\\\smallskip
+Modernized 7 October 2020}
 \begin{document}
 
 \maketitle
@@ -35,7 +35,7 @@ Rehovot 76100 Israel\\
 \vfil
 
 \begin{center}
-Copyright (c) 2003-6 by Mordechai (Moti) Ben-Ari.
+Copyright (c) 2003--2006, 2020 by Mordechai (Moti) Ben-Ari.
 \end{center}
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2
@@ -80,8 +80,8 @@ of Technology implemented the credit-recovery and token-passing
 algorithms.
 
 \subsection{References} \daj{} was first described in Distributed
-Algorithms in Java. \emph{SIGCSE Bulletin} 29(3), 1997, 62-64.
-The revised version published as: Interactive Execution of
+Algorithms in Java. \emph{ACM SIGCSE Bulletin} 29(3), 1997, 62-64.
+A revised version was published as: Interactive Execution of
 Distributed Algorithms. \emph{ACM Journal of Educational
 Resources in Computing} 1(2), 2001.
 
@@ -89,30 +89,18 @@ The graphics display of the BG algorithm is described in:
 Ahuva Tikvati, Mordechai Ben-Ari, Yifat Ben-David Kolikant.
 Virtual trees for the Byzantine Generals algorithm
 \textit{Thirty-Fifth SIGCSE Technical Symposium on Computer Science Education}.
-Norfolk, VA, 2004.
+Norfolk, VA, 2004. Also published in \textit{ACM SIGCSE Bulletin} 36(1), 2004.
 
-\subsection{Textbooks}
-M. Ben-Ari. \emph{Principles of Concurrent and Distributed Programming}.
-Prentice-Hall International, 1990.
-New edition forthcoming in 2006.
+\subsection{Download}
 
-Nancy Lynch. \emph{Distributed Algorithms}. Morgan Kaufman, 1996.
+\daj{} can be downloaded from:
+\begin{quote}
+\url{https://www.weizmann.ac.il/sci-tea/benari/software-and-learning-materials/daj-distributed-algorithms-java}
 
-Hagit Attiya and Jennifer Welch.
-\emph{Distributed Computing}. McGraw-Hill, 1998.
-
-\subsection{Website}
-
-The \daj{} website is at \url{http://stwww.weizmann.ac.il/g-cs/benari/daj/}.
+\url{https://github.com/motib/daj}
+\end{quote}
 
 \section{Installation}
-
-%\smallskip
-%begin{center}
-%\framebox[.9\textwidth]{\parbox{.8\textwidth}{%
-%\centering\textbf{\Large \daj{} needs Java 1.5.}}}
-%\end{center}
-%smallskip
 
 Download the \daj{} distribution file called \p{dajN.zip},
 where \p{N} is the version number.
@@ -129,14 +117,11 @@ file \p{daj.jar}.
 \subsection{Executing the program}
 
 Execute \p{run.bat} which contains the command \p{javaw -jar daj.jar}.
+
 Choose an algorithm and the number of nodes from the menu that appears
 and select \p{Start}.
-You can also select the algorithm and number of nodes from the command line:
-\p{run alg [num]},
-where \p{alg} is the algorithm code (\p{bg}, \p{ra}, etc.), and \p{num} is the
-number of nodes from 2 to 6, default 4.
-To obtain a list of the currently implemented algorithms
-and their codes, execute \p{java -jar daj.jar help}.
+
+To obtain a list of the implemented algorithms run \p{java -jar daj.jar help}.
 
 \subsection{Description of the display}
 The structure of the display for each algorithm is identical (Figure~\ref{fig1}).
@@ -150,18 +135,25 @@ of the algorithm. The contents of these buttons change according to the
 state of the node.
 The data for each node is color-coded.
 
-\begin{figure}[!htb]
+\begin{figure}[t]
 \begin{center}
-\includegraphics[width=15cm,height=10cm]{daj.jpg}
+\includegraphics[width=15cm,keepaspectratio=true]{daj.jpg}
 \end{center}
-\label{fig1}
+\caption{The algorithm window}\label{fig1}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=10cm,keepaspectratio=true]{trace.jpg}
+\end{center}
+\caption{The action trace}\label{fig2}
 \end{figure}
 
 \subsection{Creating a scenario}
 %\begin{itemize}
 To perform a step of the algorithm, select a button in one of the nodes.
 The data structure is updated and the action is written on the log file
-and in the action trace window.
+and in the action trace window (Figure~\ref{fig2}).
 Some buttons may not be active. It is a test of your understanding of the
 algorithm that you not click on a non-active node, though if you do so,
 the data structure is not changed. The reason that the node is not active
@@ -174,6 +166,8 @@ The \p{All} button enables you to send multiple messages such as requests
 or replies to all other nodes.
 %\end{itemize}
 
+\newpage
+
 \subsection{Algorithm-independent buttons}
 \begin{description}
 \item[\p{Reset}] Return all the nodes to their initial state.
@@ -181,7 +175,7 @@ or replies to all other nodes.
 to algorithm selection menu. To terminate execution of the program,
 close the window or select \p{New} and then \p{Exit}.
 \item [\p{FileX}, \p{ Step}, \p{ Log on/off}, \p{ Auto on/off}]
-Buttons for reading and writing the log file.
+Buttons for working with the log file (Section~\ref{s.log}).
 \item[\p{Prompt on/off}] Toggles display of the prompt lines.
 Normally, prompts will be on initially and can be turned off for assessment.
 \item[\p{Trace on/off}] Toggles display of the action trace window.
@@ -201,7 +195,7 @@ which is indicated by the colored border. The \p{Enter} key cycles
 through the nodes; clicking with the mouse will also cause that node to
 become the current one.
 
-\subsection{Writing and reading a log file}
+\subsection{Writing and reading a log file}\label{s.log}
 Actions are written to the file \p{logout.txt} as ordinary character strings:
 the number of the node and the text of the button,
 followed if needed by a comment for the reason that
@@ -217,19 +211,7 @@ This command enables you to create a scenario, and then rerun it one or more tim
 leaving the program.
 You can always edit, save or rename these files outside the program.
 
-\subsection{Applets}
-To run as an applet, include the following HTML code:
-\begin{verbatim}
-<BODY>
-<APPLET CODE="daj.dajapplet" ARCHIVE = "daj.jar"</APPLET>
-</BODY>
-\end{verbatim}
-You will not be able to use a log file
-because of the restrictions on applet security.
-You can terminate the applets by interrupting the appletviewer (\p{ctrl-C}
-from the command window).
-
-Note: support of applets may be deprecated in the future.
+\newpage
 
 \section{Using \daj{} in the classroom}
 \daj{} can be used with a screen projector
@@ -352,7 +334,7 @@ done automatically.
 \subsection{Virtual trees for the Byzantine Generals Algorithm\\
 with Ahuva Tikvati and Antoine Pineau}
 
-The program dynamically constructs \emph{knowledge trees} for each general.
+The program dynamically constructs \emph{knowledge trees} for each general (Figure~\ref{fig3}).
 A knowledge tree is a data structure
 containing the global knowledge \emph{about} the plan of a
 general, not the data structure contained locally at each node.
@@ -363,6 +345,13 @@ the plan opposite the one received), the traitorous message
 labels the outgoing edge. These trees are helpful for
 understanding how the two-stage voting is performed and hence
 why the algorithm is correct.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=10cm,keepaspectratio=true]{tree.jpg}
+\end{center}
+\caption{The virtual trees}\label{fig3}
+\end{figure}
 
 The root of the tree for general G is labeled with the name
 of the general and the plan that he chose.
@@ -380,7 +369,7 @@ The width of the tree can be changed using the slider.
 \subsection{Crash Failure}
 
 This algorithm is adapted from the EIGStop algorithm in Section 6.2.3 of
-Lynch (1996).
+Nancy Lynch. \emph{Distributed Algorithms}. Morgan Kaufman, 1996.
 
 This is a simpler version of the Byzantine Generals algorithm.
 Nodes are only allowed to \emph{crash}, that is, to stop sending
@@ -425,7 +414,7 @@ Detecting termination of distributed computation by external agents.
 Distributed Computing Systems},
 1989, 79-84.
 
-\emph{Implementation in DAJ by Otto Sepp\"al\"a, Helsinki University of Technology}
+\emph{Implementation in DAJ by Otto Sepp\"al\"a, Helsinki University of Technology}.
 
 In the sense of Huang's algorithm a distributed computation consists of
 a set of processes which communicate with each other by message passing.
@@ -444,12 +433,12 @@ Initially all processes are
 idle, the controlling agent's weight equals 1, and the rest of the processes
 is zero. The computation starts when the controlling agent sends a computation
 message to one of the processes. Any time a process sends a message, the
-process’s weight is split between itself and the process receiving the
+process's weight is split between itself and the process receiving the
 message (the message carries the weight for the receiving process). The
-algorithm therefore assigns a weight W (0 < W <= 1) to each active
+algorithm therefore assigns a weight $W (0 < W <= 1)$ to each active
 process (including the controlling agent) and to each message in transit.
 The weights assigned are such that, at any time, they satisfy an invariant
-W = 1. On finishing the computation,
+$W = 1$. On finishing the computation,
 a process sends its weight to the controlling agent, which adds the received
 weight to its own weight. When the weight of the controlling agent is once
 again equal to 1, it concludes that the computation has terminated.
@@ -484,9 +473,9 @@ back to the controlling agent.
 
 Mattern F.
 Global quiescence detection based on credit distribution and recovery.
-\emph{Information Processing Letters}, Volume 30, Number 4, p. 195-200, 1989, Elsevier
+\emph{Information Processing Letters}, Volume 30, Number 4, p. 195-200, 1989.
 
-\emph{Implementation in DAJ by Otto Sepp\"al\"a, Helsinki University of Technology}
+\emph{Implementation in DAJ by Otto Sepp\"al\"a, Helsinki University of Technology}.
 
 The Mattern algorithm is essentially the same algorithm as Huang's algorithm.
 One difference is in the implementation of the weights (here credits). While
@@ -504,14 +493,16 @@ one bigger than the original. Again all the other rules are just basic binary ad
 
 \subsection{Flooding algorithm for consensus with crashing}
 
-Based upon Section 6.2 of Lynch.
+Based upon Section 6.2 of Nancy Lynch. \emph{Distributed Algorithms}. Morgan Kaufman, 1996.
 
 \subsection{Byzantine Generals with King}
 
 This algorithm is due to Berman and Garay, Cloture votes: n/4-resilient
 distributed consensus in t+1 rounds. \emph{Mathematical Systems Theory}
 26, 1(1993), 3-19.
-It was taken from Algorithm 5.2 of Attiya and Jennifer (1998).
+It was taken from Algorithm 5.2 of Hagit Attiya and Jennifer Welch.
+\emph{Distributed Computing}. McGraw-Hill, 1998.
+
 
 Compared with the original BG algorithm,
 for one traitor, you need four (rather than three) loyal generals,
@@ -663,7 +654,7 @@ O.S.F. Carvalho and G. Roucairol.
 On mutual exclusion in computer networks.
 \emph{Communications of the ACM} 26(2), 1983, 146-147.
 
-\emph{Implementation in DAJ by Otto Sepp\"al\"a, Helsinki University of Technology}
+\emph{Implementation in DAJ by Otto Sepp\"al\"a, Helsinki University of Technology.}
 
 In the Ricart-Agrawala algorithm each entry to a critical section requires
 $2*(N-1)$ messages to be sent. \emph{(Requests and replies to and from each node)}
@@ -694,11 +685,15 @@ nodes are immediately released.
 
 
 
-\subsection{Suzuki-Kasami broadcast by Frank Harvie}
+\subsection{Suzuki-Kasami broadcast}
+
 
 Suzuki Ichiro and Kasami Tadao.
 A distributed mutual exclusion algorithm.
 \emph{ACM Transactions on Computer Systems}, 3(4), 1985, 344-349.
+
+\emph{Implementation in DAJ by Frank Harvie, University of Pretoria.}
+
 
 If a site attempting to enter the critical section(CS) does not have
 the token, it broadcast a \p{request} message for the token to all other sites.
@@ -777,9 +772,7 @@ or send the token. However, only the correct action is allowed.
 \section{Software structure}
 The classes of \daj{} in the package \p{daj} are:
 
-\p{daj.java} and \p{dajapplet.java} - The main programs for an application and an
-applet. They pass the command-line arguments or html parameters
-to an instance of \p{Screen}.
+\p{daj.java} - The main program.
 
 \p{AlgList.java} - Maintains the list of class, titles and
 command-line parameters for each algorithm. It contains an inner
@@ -857,8 +850,9 @@ Algorithm-specific classes \p{BG.java}, \p{RA.java}, etc.,
 are in package \p{daj.algorithms} and visualizations are in
 \p{daj.algorithms.visual}.
 
-\subsection{Virtual trees for the Byzantine Generals Algorithm
-with Antoine Pineau}
+\subsection{Virtual trees for the Byzantine Generals Algorithm}
+
+\emph{Implementation in Java by Antoine Pineau of the University of Joensuu.}
 
 The display of the virtual trees for the BG algorithm is
 implemented in three new classes: \p{Node},
@@ -894,24 +888,6 @@ write a new class that extends \p{DistAlg.java}. In
 \p{AlgList.java}, add a two-letter algorithm code to the string
 array \p{algs}, and a title to the string array \p{titles}, and
 within the constructor, add an allocator for the new class.
-
-\appendix
-
-\section{Release notes}
-
-\begin{description}
-\item[3.4] New algorithms implemented.
-\item[3.3.1] Improved knowledge tree representation of BG algorithm.
-Error message if auto run entry has higher node number than number of
-nodes in an execution.
-\item[3.3] Replaced algorithm select buttons by combox box.
-Added flooding algorithm.
-Added assessments to several algorithms.
-\item[3.2] Visualizations of the spanning tree of the DS algorithm
-and the queue of the RA algorithm.
-Documentation converted to LaTeX/PDF.
-\item[3.1] Visualization of the knowledge trees for the BG algorithm.
-\end{description}
 
 
 \end{document}
