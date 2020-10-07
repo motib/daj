@@ -50,18 +50,35 @@ included in this archive.
 
 \daj{} is an interactive, visual aid for studying distributed
 algorithms. \emph{Interactive}, because you must explicitly
-specify every step of the interleaved execution sequence.
+specify every step of the execution sequence.
 \emph{Visual}, because the state of the nodes is continuously
 displayed. \emph{Study aid}, because they solve one of the most
 difficult problems encountered by students of these algorithms
 by automatically doing the necessary ``book-keeping.'' The
 program can create a log file of commands so that you can
-automatically replay scenarios until you understand them. Ten
-algorithms are current implemented,
-and you can implement other algorithms with only
-an elementary knowledge of Java.
+automatically replay scenarios until you understand them. You can implement other algorithms with an elementary knowledge of Java.
 Visualizations are included for the virtual global structures
-contructed by some of the algorithms.
+constructed by some of the algorithms.
+
+The following algorithms are implemented:
+\begin{enumerate}
+\item Berman-Garay (King) algorithm for consensus
+\item Byzantine generals algorithm for consensus (byzantine failures)
+\item Byzantine generals algorithm for consensus (crash failures)
+\item Chandy-Lamport algorithm for global snapshots
+\item Dijkstra-Scholten termination detection
+\item Flooding algorithm for consensus
+\item Lamport algorithm for mutual exclusion
+\item Ricart-Agrawala algorithm for mutual exclusion
+\item Maekawa mutual algorithm for exclusion
+\item Suzuki-Kasami algorithm for mutual exclusion
+\item Huang credit-recovery termination detection
+\item Mattern credit-recovery termination detection
+\item Carvalho-Roucairol token algorithm for mutual exclusion
+\item Neilsen-Mizuno algorithm for mutual exclusion
+\end{enumerate}
+
+
 
 \subsection{Acknowledgments}
 I wish to thank Judith Bishop of the University of Pretoria for
@@ -93,12 +110,7 @@ Norfolk, VA, 2004. Also published in \textit{ACM SIGCSE Bulletin} 36(1), 2004.
 
 \subsection{Download}
 
-\daj{} can be downloaded from:
-\begin{quote}
-\url{https://www.weizmann.ac.il/sci-tea/benari/software-and-learning-materials/daj-distributed-algorithms-java}
-
-\url{https://github.com/motib/daj}
-\end{quote}
+\daj{} can be downloaded from \url{https://github.com/motib/daj}.
 
 \section{Installation}
 
@@ -116,12 +128,8 @@ file \p{daj.jar}.
 
 \subsection{Executing the program}
 
-Execute \p{run.bat} which contains the command \p{javaw -jar daj.jar}.
-
-Choose an algorithm and the number of nodes from the menu that appears
-and select \p{Start}.
-
-To obtain a list of the implemented algorithms run \p{java -jar daj.jar help}.
+Execute \p{run.bat} which contains the command \p{java -jar daj.jar \%1 \%2}.
+The two optional parameters are the algorithm code and the number of nodes. Execute \p{run help} to obtain a list of the codes. Alternatively, the algorithm and number of nodes can be chosen interatively from the menu that appears when \daj{} is started.
 
 \subsection{Description of the display}
 The structure of the display for each algorithm is identical (Figure~\ref{fig1}).
@@ -210,8 +218,6 @@ Selecting \p{FileX} will cause a file exchange:
 This command enables you to create a scenario, and then rerun it one or more times without
 leaving the program.
 You can always edit, save or rename these files outside the program.
-
-\newpage
 
 \section{Using \daj{} in the classroom}
 \daj{} can be used with a screen projector
@@ -311,10 +317,9 @@ chosen plans to each of the other three generals. While this is
 being done, you may receive the plan of another general; these
 plans must eventually be relayed to the remaining two generals.
 
-\emph{Note:} The \p{All} button sends or relays the correct data
+The \p{All} button sends or relays the correct data
 to the other nodes as would be done by a loyal general. For a
-traitor, you must send messages one by one, according to the
-scenario that you want to create.
+traitor, you must send messages one by one.
 
 A two-stage majority voting scheme is used. Majority voting (2
 out of 3) is used by each general to decide what the true plan
@@ -340,7 +345,7 @@ containing the global knowledge \emph{about} the plan of a
 general, not the data structure contained locally at each node.
 The root of the tree contains the general's selection (attack or
 retreat). For each message sent, a node is created for the
-recepient of the message. If the sender is a traitor (sending
+recipient of the message. If the sender is a traitor (sending
 the plan opposite the one received), the traitorous message
 labels the outgoing edge. These trees are helpful for
 understanding how the two-stage voting is performed and hence
@@ -466,9 +471,8 @@ for more weight, which will send the supply as any is or becomes available.
 If the process terminates before receiving the supply, it sends the supply
 back to the controlling agent.
 
-%An example of a scenario can be found in the file \bu{hgexample.html}.
+An example of a scenario can be found in the file \bu{hgexample.html}.
 
-% Otto: Added the description.
 \subsection{Mattern Global Quiescence Detection Algorithm}
 
 Mattern F.
@@ -486,10 +490,7 @@ environment in this algorithm) counts the credit debt distributed in the system
 
 Splitting a weight is equal to changing one exponent into two that are both
 one bigger than the original. Again all the other rules are just basic binary addition
- and substraction rules.
-
-\emph{Mattern also defines a second variant in his paper, which is currently not implemented in DAJ.}
-
+and subtraction rules.
 
 \subsection{Flooding algorithm for consensus with crashing}
 
@@ -570,7 +571,7 @@ When a site removes a request from its request queue, its own request may
 come at the top of the queue, enabling it to enter the CS. The algorithm
 executes CS requests in the increasing order of timestamps.
 
-To minimise the number of messages send and improve performance,
+To minimize the number of messages send and improve performance,
 the following changes were made:
 If site Sj receives a \p{request} message from Si after it has sent its own
 \p{request} message with timestamp lower than the timestamp of Si's request,
@@ -595,7 +596,7 @@ decentralized systems.
 \emph{ACM Transactions on Computer Systems}, 3(2), 1985, 145-159.
 
 This algorithm achieves mutual exclusion by maintaining a subset
-of the sites particpating in the algorithm. A site has to send \p{request}
+of the sites participating in the algorithm. A site has to send \p{request}
 messages to all the sites in this request set(R). When a site in this
 request set receives a \p{request} message, it sends back a \p{reply} message
 to the sender. If it has already sent a \p{reply} message to someone else,
@@ -607,16 +608,16 @@ handled with \p{release} messages.
 
 Example 1:
 Select \p{Enter Critical Section} for John
-Send a \p{Request} to all John's neighbours.
+Send a \p{Request} to all John's neighbors.
 For each participant, select \p{Reply} to send a reply to John.
 John can now enter the critical section. Select \p{Enter}.
 John is now in the critical section.
 
 Example 2, Deadlock demonstration:
 Select \p{Enter Critical Section} for John.
-Send a \p{Request} to all John's neighbours.
+Send a \p{Request} to all John's neighbors.
 Select \p{Enter Critical Section} for Zoe, John and Zoe are now competing for the CS.
-Send a \p{Request} to all Zoe's neighbours.
+Send a \p{Request} to all Zoe's neighbors.
 Send a \p{Reply} from Basil to John.
 DEADLOCK ! Since one reply has already been sent out for one participant.
 
@@ -647,7 +648,7 @@ The queue is displayed in the visualization frame.
 A node is added to the queue when the first request message from it is received
 at another node and is removed from the queue when it leaves the critical section.
 
-% Otto: Added the description.
+
 \subsection{Carvalho-Roucairol Mutual Exclusion}
 
 O.S.F. Carvalho and G. Roucairol.
@@ -665,8 +666,6 @@ To enter its critical section, a node needs authorizations from all the other
 nodes in the network. Information on authorizations over the
 other nodes in the network is held in each node in an array
 with one bit for each other node.
-%For any pair of nodes only one end can hold the
-%authorization over the another.
 
 The essential idea behind this algorithm is that a node
 trying to enter its critical section does not need to renew its authorization
@@ -683,10 +682,7 @@ If a request is received while in the critical section, the reply is deferred
 and when the process exits the critical section, authorities held over such
 nodes are immediately released.
 
-
-
 \subsection{Suzuki-Kasami broadcast}
-
 
 Suzuki Ichiro and Kasami Tadao.
 A distributed mutual exclusion algorithm.
@@ -714,7 +710,7 @@ Select \p{Now} for John and Send the Token.
 Select \p{Now} for Zoe and Send the Token.
 Select \p{Now} for Basil.
 John wants the CS, so select \p{Request CS} for him and request the token
-from all of his neighbours.
+from all of his neighbors.
 John will be in the CS, select \p{Now} for him to exit the CS.
 
 \subsection{Chandy-Lamport Snapshots}
@@ -734,7 +730,7 @@ you must send markers to divide messages that have been received
 from those still in the channel. Upon termination of the
 snapshot, each message that has been sent is accounted for:
 either it has been received or it is listed as having been in
-transit on a channel.
+transit.
 
 % Ville: Added the description.
 \subsection{Neilsen-Mizuno Algorithm for Mutual Exclusion}
@@ -746,7 +742,7 @@ The Neilsen-Mizuno algorithm for distributed mutual exclusion is based
 upon passing a token in a set of virtual trees constructed by the
 algorithm.
 
-A node that is the root of a tree and holds the token can enter its
+A node that is the root and holds the token can enter its
 critical section. Other nodes send requests to their immediate
 parents. A node receiving a request can take one of the following actions.
 
